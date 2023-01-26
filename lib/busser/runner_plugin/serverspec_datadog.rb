@@ -23,24 +23,24 @@ require 'rubygems/dependency_installer'
 #
 # @author HIGUCHI Daisuke <d-higuchi@creationline.com>
 #
-class Busser::RunnerPlugin::Serverspec < Busser::RunnerPlugin::Base
+class Busser::RunnerPlugin::ServerspecDatadog < Busser::RunnerPlugin::Base
   postinstall do
-    install_gem('bundler')
+    install_gem('bundler', '2.3.26')
   end
 
   def test
     run_bundle_install
     install_serverspec
 
-    runner = File.join(File.dirname(__FILE__), %w{.. serverspec runner.rb})
-    run_ruby_script!("#{runner} #{suite_path('serverspec').to_s}")
+    runner = File.join(File.dirname(__FILE__), %w{.. serverspec_datadog runner.rb})
+    run_ruby_script!("#{runner} #{suite_path('serverspec_datadog').to_s}")
   end
 
   private
 
   def run_bundle_install
     # Referred from busser-shindo
-    gemfile_path = File.join(suite_path, 'serverspec', 'Gemfile')
+    gemfile_path = File.join(suite_path, 'serverspec_datadog', 'Gemfile')
     if File.exists?(gemfile_path)
       # Bundle install local completes quickly if the gems are already found
       # locally it fails if it needs to talk to the internet. The || below is
