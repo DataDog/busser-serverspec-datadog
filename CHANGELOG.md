@@ -1,5 +1,11 @@
 # You should use Kitchen::Verifier::Shell + Serverspec
 
+
+## 0.6.0 2023-01-26
+
+* Pin bundler version installed in postinstall to 2.3.26
+* Rename gem to busser-serverspec_datadog
+
 ## 0.5.10 2016-08-12
 
 * use container-based test at travis-ci.
